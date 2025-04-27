@@ -1,0 +1,30 @@
+{
+    "name": "vscode-demo-extension",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "sourceRoot": "apps/vscode-demo-extension/src",
+    "tags": [],
+    "targets": {
+      "build": {
+        "executor": "nx:run-commands",
+        "options": {
+          "cwd": "apps/vscode-demo-extension",
+          "command": "vsce package"
+        }
+      },
+      "dev": {
+        "executor": "nx:run-commands",
+        "options": {
+          "cwd": "apps/vscode-demo-extension",
+          "command": "webpack"
+        }
+      },
+      "watch": {
+        "executor": "nx:run-commands",
+        "options": {
+          "cwd": "apps/vscode-demo-extension",
+          "command": "webpack --watch"
+        }
+      }
+    }
+  }

@@ -1,0 +1,68 @@
+{
+  "name": "use-vscode-demo-extension",
+  "displayName": "use-vscode-demo-extension",
+  "description": "",
+  "version": "0.0.1",
+  "publisher": "blamy",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:use-vscode-demo-extension.helloWorld",
+    "onCommand:use-vscode-demo-extension.openReactWebview"
+  ],
+  "browser": "./dist/web/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "use-vscode-demo-extension.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "use-vscode-demo-extension.openReactWebview",
+        "title": "Open React Webview"
+      }
+    ]
+  },
+  "scripts": {
+    "test": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. --extensionTestsPath=dist/web/test/extension.test.js",
+    "pretest": "pnpm run compile",
+    "vscode:prepublish": "pnpm run package",
+    "compile": "pnpm run check-types && pnpm run lint && vite build",
+    "watch": "vite build --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "watch:vite": "vite build --watch",
+    "package": "pnpm run check-types && pnpm run lint && vite build --mode production",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "dev": "vite",
+    "run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
+  },
+  "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@types/assert": "^1.5.11",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.6",
+    "@types/vscode": "^1.99.0",
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/ui": "^3.1.2",
+    "@vscode/test-web": "^0.0.68",
+    "assert": "^2.1.0",
+    "eslint": "^9.23.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.8.2",
+    "vite": "^5.2.10",
+    "vitest": "^3.1.2",
+    "vite-plugin-use-vscode": "file:../../libs/vite-plugin-use-vscode"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
